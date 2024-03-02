@@ -7,12 +7,10 @@
   --border-radius: 8px;
 }
 
-body, html {
+body,
+html {
   height: 100%;
   margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 18px;
   background-color: var(--main-bg-color);
 }
@@ -21,13 +19,18 @@ body, html {
   font-family: 'Arial', sans-serif;
   color: var(--main-color);
   width: 100%;
-  max-width: 600px;
   margin: auto;
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: var(--border-radius);
   background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
 }
+
 
 h2 {
   color: var(--main-color);
@@ -35,26 +38,40 @@ h2 {
   margin-bottom: 20px;
 }
 
-.ChooseFileButton, .SubmitButton {
-  display: block;
-  width: calc(100% - 40px);
-  margin: 10px auto;
-  padding: 10px;
+.ContentContainer {
+  padding: 20px;
+  margin: auto;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ButtonContainer {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.ChooseFileButton,
+.SubmitButton {
+  padding: 10px 15px;
   border: none;
-  border-radius: var(--border-radius);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
   background-color: var(--button-bg-color);
   color: var(--button-text-color);
-  cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.ChooseFileButton:hover {
-  background-color: #397d02;
-}
-
+.ChooseFileButton:hover,
 .SubmitButton:hover {
   background-color: #397d02;
-  color: #ffffff;
 }
 
 .Summary {
@@ -68,9 +85,13 @@ h2 {
 .FileName {
   margin-top: 10px;
   font-style: italic;
-  text-align: center; 
+  text-align: center;
   width: 100%;
-  display: block; 
+  display: block;
+}
+
+.FileInput {
+  font-size: 14px;
 }
 
 .Loader {
@@ -81,11 +102,17 @@ h2 {
   height: 30px;
   animation: spin 1s ease-in-out infinite;
   margin: 20px auto;
+  align-self: center;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 
@@ -94,7 +121,94 @@ h2 {
     padding: 10px;
   }
 
-  .ChooseFileButton, .SubmitButton {
+  .ChooseFileButton,
+  .SubmitButton {
     width: auto;
   }
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #333;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  padding: 0 1rem;
+  cursor: pointer;
+}
+
+.nav-links li:hover {
+  background-color: #555;
+}
+
+.LoginForm,
+.RegisterForm {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  margin: 20px auto;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: calc(100% - 20px);
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.25);
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin-top: 20px;
+  background-color: var(--accent-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #397d02;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+label {
+  margin-bottom: 5px;
+  color: var(--main-color);
+}
+
+.ErrorMessage {
+  margin: 10px 0;
+  color: red;
+  text-align: center;
 }
